@@ -1,0 +1,28 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",        //可执行文件的完整路径，文件名与 build.json 中生成的可执行文件名保持一致
+            "args": [],
+            "stopAtEntry": false,           //是否在 main 函数处暂定执行
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,        //在打开外部终端执行程序,而不是在 VSCode 的控制台中运行
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }                   // pretty printing: gdb 输出 stl 正常
+            ],
+            "preLaunchTask": "C/C++: g++.exe 生成活动文件"
+        }
+    ]
+}
