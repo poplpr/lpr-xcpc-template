@@ -109,6 +109,23 @@ template <class T> struct fenwick_tree {
         return sum(r) - sum(l);
     }
 
+    /**
+     * 返回前缀和 [0, ret) 小于等于 v 的最后一个位置。
+     * 元素必须都为非负数，否则正确性有误。
+     * params::v >= 0
+     */
+    int max_right(const T& v) {
+        int ret = 0;
+        U now{};
+        for (int i = 1 << std::__lg(_n); i != 0; i >>= 1) {
+            if (ret + i <= _n && now + data[ret + i - 1] <= v) {
+                ret += i;
+                now = now + data[ret - 1];
+            }
+        }
+        return ret;
+    }
+
   private:
     int _n;
     std::vector<U> data;

@@ -23,6 +23,26 @@
                 }                   // pretty printing: gdb 输出 stl 正常
             ],
             "preLaunchTask": "C/C++: g++.exe 生成活动文件"
+        },
+        {
+            "name": "(gdb) Launch 根目录",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${cwd}\\public_compile.exe",        //可执行文件的完整路径，文件名与 build.json 中生成的可执行文件名保持一致
+            "args": [],
+            "stopAtEntry": false,           //是否在 main 函数处暂定执行
+            "cwd": "${cwd}",
+            "environment": [],
+            "externalConsole": false,        //在打开外部终端执行程序,而不是在 VSCode 的控制台中运行
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }                   // pretty printing: gdb 输出 stl 正常
+            ],
+            "preLaunchTask": "C/C++: g++.exe 生成活动文件到根目录"
         }
     ]
 }
