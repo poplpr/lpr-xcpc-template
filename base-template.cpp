@@ -73,7 +73,13 @@ template<typename First, typename... Rest> void _write(const First& first, const
     write(first); putchar(32); write(rest...);
 }
 
-template<typename T> void write(T x, char end_char='\0') {
+template<typename T> void write(std::vector<T> x) {
+    for(int i = 0; i < SZ(x); i++) {
+        _write(x[i]); putchar(" \n"[i == SZ(x) - 1]);
+    }
+}
+
+template<typename T> void write(T x, char end_char='\n') {
     _write(x);
     if (end_char != '\0') putchar(end_char);
 }
