@@ -73,9 +73,11 @@ template<typename First, typename... Rest> void _write(const First& first, const
     write(first); putchar(32); write(rest...);
 }
 
-template<typename T> void write(std::vector<T> x) {
+template<typename T> void write_vector(std::vector<T> x, char split_char = ' ', char end_char = '\n') {
     for(int i = 0; i < SZ(x); i++) {
-        _write(x[i]); putchar(" \n"[i == SZ(x) - 1]);
+        _write(x[i]);
+        if (i == SZ(x) - 1) { if (split_char != '\0') putchar(split_char);}
+        else if (end_char != '\0') putchar(end_char);
     }
 }
 
